@@ -46,21 +46,26 @@ Tap on /help to know all my commands!
 
 HELP_STRINGS = f"""
 Hello there! My name is *{dispatcher.bot.first_name}*. The lewdest near you.
-I provide lewds.
+(I provide lewds.)[https://telegra.ph/file/f7c5289499d284aebfa5a.mp4]
+
 *Main* commands available:
  • /start: Starts me, can be used to check I'm alive or not.
  • /help: PM's you this message.
+ 
 Click on the buttons below to get documentation about specific modules!
 """
 
 @run_async
 def start(update, context):
     buttons = [
+        InlineKeyboardButton(
+            text="Add to Group 💜", url="t.me/{}?startgroup=true".format(context.bot.username)
+        )
+    ]
     [
         InlineKeyboardButton(
-            text="Add to Group 👥", url="t.me/{}?startgroup=true".format(context.bot.username)
-        ),
-        InlineKeyboardButton("Maintained by", url="t.me/dank_as_fuck"),
+            text="Support Group", url="t.me/Cutiepii_Support"),
+        InlineKeyboardButton("", url="t.me/Awesome_Rj"),
     ]
 ]
     if update.effective_chat.type == "private":
@@ -79,7 +84,7 @@ def start(update, context):
             )
     else:
         update.effective_message.reply_text(
-            "Hi, I'm Chizuru."
+            "Hi, I'm Tamashii."
         )
 
 def error_handler(update, context):
