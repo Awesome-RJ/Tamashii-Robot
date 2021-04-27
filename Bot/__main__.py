@@ -75,8 +75,7 @@ InlineKeyboardMarkup(
                         "➕ Add To Your Group ➕", url="https://t.me/Tamashii_Robot?startgroup=true"
                     )]
             ]
-        ),
-    )
+        )
     if update.effective_chat.type == "private":
         args = context.args
         if len(args) >= 1:
