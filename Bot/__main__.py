@@ -75,7 +75,7 @@ def start(update, context):
                 send_help(update.effective_chat.id, HELP_STRINGS)
         else:
             update.effective_message.reply_photo(
-                "https://telegra.ph/file/1a94f94b54cb28cb4fb98.jpg",
+                "https://telegra.ph/file/f7490615ea1cc1b89ca5c.jpg",
                 PM_START_TEXT,
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
