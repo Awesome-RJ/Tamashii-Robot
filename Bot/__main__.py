@@ -67,7 +67,6 @@ def start(update, context):
             text="Support Group", url="t.me/Cutiepii_Support"),
         InlineKeyboardButton("", url="t.me/Awesome_Rj"),
     ]
-]
     if update.effective_chat.type == "private":
         args = context.args
         if len(args) >= 1:
