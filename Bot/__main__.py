@@ -58,15 +58,26 @@ Click on the buttons below to get documentation about specific modules!
 @run_async
 def start(update, context):
     buttons = [
-        InlineKeyboardButton(
-            text="Add to Group 💜", url="t.me/{}?startgroup=true".format(context.bot.username)
-        )
-    ]
-    [
-        InlineKeyboardButton(
-            text="Support Group", url="t.me/Cutiepii_Support"),
-        InlineKeyboardButton("", url="t.me/Awesome_Rj"),
-    ]
+InlineKeyboardMarkup(
+            [[
+                    InlineKeyboardButton(
+                        "💬 Lewds Fan's Group", url="https://t.me/joinchat/mW59hTih9powMDVl"
+                    ),
+                    InlineKeyboardButton(
+                        "💬 Support Group", url="https://t.me/Cutiepii_Support"
+                    )
+                ],[ 
+                    InlineKeyboardButton(
+                        "💁 Owner 💁", url="https://t.me/Awesome_Rj"
+                    )],
+                    [ 
+                    InlineKeyboardButton(
+                        "➕ Add To Your Group ➕", url="https://t.me/Tamashii_Robot?startgroup=true"
+                    )]
+            ]
+        ),
+     disable_web_page_preview=True
+    )
     if update.effective_chat.type == "private":
         args = context.args
         if len(args) >= 1:
