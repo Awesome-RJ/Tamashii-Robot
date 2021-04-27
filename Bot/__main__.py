@@ -76,7 +76,6 @@ InlineKeyboardMarkup(
                     )]
             ]
         ),
-     disable_web_page_preview=True
     )
     if update.effective_chat.type == "private":
         args = context.args
