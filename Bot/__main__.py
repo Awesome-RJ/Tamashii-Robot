@@ -46,7 +46,7 @@ Tap on /help to know all my commands!
 
 HELP_STRINGS = f"""
 Hello there! My name is *{dispatcher.bot.first_name}*. The lewdest near you.
-(I provide lewds.)[https://telegra.ph/file/f7c5289499d284aebfa5a.mp4]
+[I provide lewds.](https://telegra.ph/file/f7c5289499d284aebfa5a.mp4)
 
 *Main* commands available:
  • /start: Starts me, can be used to check I'm alive or not.
