@@ -15,18 +15,18 @@ HELPABLE = {}
 STATS = []
 
 for module_name in ALL_MODULES:
-    imported_module = importlib.import_module("Bot.modules." + module_name)
+    imported_module = importlib.import_module(f"Bot.modules.{module_name}")
     if not hasattr(imported_module, "__mod_name__"):
         imported_module.__mod_name__ = imported_module.__name__
 
-    if not imported_module.__mod_name__.lower() in IMPORTED:
+    if imported_module.__mod_name__.lower() not in IMPORTED:
         IMPORTED[imported_module.__mod_name__.lower()] = imported_module
     else:
         raise Exception("Can't have two modules with the same name! Please change one")
-    
+
     if hasattr(imported_module, "__help__") and imported_module.__help__:
         HELPABLE[imported_module.__mod_name__.lower()] = imported_module
-        
+
     if hasattr(imported_module, "__stats__"):
         STATS.append(imported_module)
 
@@ -39,10 +39,10 @@ def send_help(chat_id, text, keyboard=None):
     )
     
     
-PM_START_TEXT = f"""
-Hewwo, uwu >////<.
-Tap on /help to know all my commands!
-""" 
+PM_START_TEXT = (
+    """\x1fHewwo, uwu >////<.\x1fTap on /help to know all my commands!\x1f"""
+)
+ 
 
 HELP_STRINGS = f"""
 Hello there! My name is *{dispatcher.bot.first_name}*. The lewdest near you.
@@ -107,7 +107,7 @@ def error_handler(update, context):
         payload += f" \n<b>- User</b>: {mention_html(update.effective_user.id, update.effective_user.first_name)}"
     # there are more situations when you don't get a chat
     if update.effective_chat:
-        if update.effective_chat.title == None:
+        if update.effective_chat.title is None:
             payload += f" \n<b>- Chat</b>: <i>Bot PM</i>"
         else:
             payload += (
@@ -263,7 +263,7 @@ def main():
 
 
 if __name__ == "__main__":
-    LOGGER.info("Successfully loaded modules: " + str(ALL_MODULES))
+    LOGGER.info(f"Successfully loaded modules: {str(ALL_MODULES)}")
     LOGGER.info("Using long polling.")
     main()
     updater.start_polling(timeout=15, read_latency=4)

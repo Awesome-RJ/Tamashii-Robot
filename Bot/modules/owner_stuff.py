@@ -17,26 +17,26 @@ from platform import python_version
 def stats(update, context):
     uptime = datetime.datetime.fromtimestamp(boot_time()).strftime("%Y-%m-%d %H:%M:%S")
     status = "*-------< System >-------*\n"
-    status += "*System uptime:* " + str(uptime) + "\n"
+    status += f"*System uptime:* {str(uptime)}" + "\n"
 
     uname = platform.uname()
-    status += "*System:* " + str(uname.system) + "\n"
-    status += "*Node name:* " + str(uname.node) + "\n"
-    status += "*Release:* " + str(uname.release) + "\n"
-    status += "*Version:* " + str(uname.version) + "\n"
-    status += "*Machine:* " + str(uname.machine) + "\n"
-    status += "*Processor:* " + str(uname.processor) + "\n\n"
+    status += f"*System:* {str(uname.system)}" + "\n"
+    status += f"*Node name:* {str(uname.node)}" + "\n"
+    status += f"*Release:* {str(uname.release)}" + "\n"
+    status += f"*Version:* {str(uname.version)}" + "\n"
+    status += f"*Machine:* {str(uname.machine)}" + "\n"
+    status += f"*Processor:* {str(uname.processor)}" + "\n\n"
 
     mem = virtual_memory()
     cpu = cpu_percent()
     disk = disk_usage("/")
-    status += "*CPU usage:* " + str(cpu) + " %\n"
-    status += "*Ram usage:* " + str(mem[2]) + " %\n"
-    status += "*Storage used:* " + str(disk[3]) + " %\n\n"
-    status += "*Python version:* " + python_version() + "\n"
-    status += "*Library version:* " + str(__version__) + "\n"
+    status += f"*CPU usage:* {str(cpu)}" + " %\n"
+    status += f"*Ram usage:* {str(mem[2])}" + " %\n"
+    status += f"*Storage used:* {str(disk[3])}" + " %\n\n"
+    status += f"*Python version:* {python_version()}" + "\n"
+    status += f"*Library version:* {str(__version__)}" + "\n"
     update.effective_message.reply_text(
-        
+
         "*Chizuru, the lewd one near you*\n" + 
         "built by [Dank-del](t.me/dank_as_fuck)\n" +
         "Built with ❤️ using python-telegram-bot\n\n" + status +

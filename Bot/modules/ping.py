@@ -48,10 +48,7 @@ def get_readable_time(seconds: int) -> str:
 
     while count < 4:
         count += 1
-        if count < 3:
-            remainder, result = divmod(seconds, 60)
-        else:
-            remainder, result = divmod(seconds, 24)
+        remainder, result = divmod(seconds, 60) if count < 3 else divmod(seconds, 24)
         if seconds == 0 and remainder == 0:
             break
         time_list.append(int(result))
@@ -60,7 +57,7 @@ def get_readable_time(seconds: int) -> str:
     for x in range(len(time_list)):
         time_list[x] = str(time_list[x]) + time_suffix_list[x]
     if len(time_list) == 4:
-        ping_time += time_list.pop() + ", "
+        ping_time += f'{time_list.pop()}, '
 
     time_list.reverse()
     ping_time += ":".join(time_list)
@@ -74,7 +71,7 @@ def ping(update: Update, context: CallbackContext):
     start_time = time.time()
     message = msg.reply_text("Pinging...")
     end_time = time.time()
-    telegram_ping = str(round((end_time - start_time) * 1000, 3)) + " ms"
+    telegram_ping = f'{str(round((end_time - start_time) * 1000, 3))} ms'
     uptime = get_readable_time((time.time() - StartTime))
 
     message.edit_text(
